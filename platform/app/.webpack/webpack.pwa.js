@@ -152,11 +152,11 @@ module.exports = (env, argv) => {
       client: {
         overlay: { errors: true, warnings: false },
       },
-      proxy: [
-        {
-          '/dicomweb': 'http://localhost:5000',
-        },
-      ],
+      // proxy: [
+      //   {
+      //     '/dicomweb': 'http://localhost:5000',
+      //   },
+      // ],
       static: [
         {
           directory: '../../testdata',
@@ -181,18 +181,18 @@ module.exports = (env, argv) => {
     },
   });
 
-  if (hasProxy) {
-    mergedConfig.devServer.proxy = mergedConfig.devServer.proxy || {};
-    mergedConfig.devServer.proxy = {
-      [PROXY_TARGET]: {
-        target: PROXY_DOMAIN,
-        changeOrigin: true,
-        pathRewrite: {
-          [`^${PROXY_PATH_REWRITE_FROM}`]: PROXY_PATH_REWRITE_TO,
-        },
-      },
-    };
-  }
+  // if (hasProxy) {
+  //   mergedConfig.devServer.proxy = mergedConfig.devServer.proxy || {};
+  //   mergedConfig.devServer.proxy = {
+  //     [PROXY_TARGET]: {
+  //       target: PROXY_DOMAIN,
+  //       changeOrigin: true,
+  //       pathRewrite: {
+  //         [`^${PROXY_PATH_REWRITE_FROM}`]: PROXY_PATH_REWRITE_TO,
+  //       },
+  //     },
+  //   };
+  // }
 
   if (isProdBuild) {
     mergedConfig.plugins.push(
